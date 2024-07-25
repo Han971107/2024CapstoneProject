@@ -1,13 +1,13 @@
 #pragma once
-#include "Creature.h"
+#include "GameObject.h"
 
-class Monster : public Creature
+class Creature : public GameObject
 {
-	using Super = Creature;
+	using Super = GameObject;
 
 public:
-	Monster();
-	virtual ~Monster() override;
+	Creature();
+	virtual ~Creature() override;
 
 	virtual void BeginPlay() override;
 	virtual void Tick() override;
@@ -19,8 +19,10 @@ private:
 	virtual void TickSkill() override {};
 	virtual void UpdateAnimation() override {};
 
-protected:
-	// TODO 
+	void SetStat(Stat stat) { _stat = stat; }
+	Stat& GetStat() { return _stat; }
 
+protected:
+	Stat _stat;
 };
 

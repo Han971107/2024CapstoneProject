@@ -170,7 +170,7 @@ void DevScene::Init()
 		//		collider->SetCollisionLayer(CLT_OBJECT);
 		//		test->AddComponent(collider);
 		//		GET_SINGLE(CollisionManager)->AddCollider(collider);
-		//		test->SetPos(Pos{ 400, 200 });
+		//		test->SetPos(Pos{ 400, 200 }); 
 		//	}
 		//	AddActor(test);
 		//}

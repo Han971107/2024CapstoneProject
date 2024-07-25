@@ -1,13 +1,13 @@
 #pragma once
-#include "Creature.h"
+#include "GameObject.h"
 
-class Monster : public Creature
+class Projectile : public GameObject
 {
-	using Super = Creature;
+	using Super = GameObject;
 
 public:
-	Monster();
-	virtual ~Monster() override;
+	Projectile();
+	virtual ~Projectile() override;
 
 	virtual void BeginPlay() override;
 	virtual void Tick() override;

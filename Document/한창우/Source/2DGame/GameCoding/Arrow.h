@@ -1,13 +1,13 @@
 #pragma once
-#include "Creature.h"
+#include "Projectile.h"
 
-class Monster : public Creature
+class Arrow : public Projectile
 {
-	using Super = Creature;
+	using Super = Projectile;
 
 public:
-	Monster();
-	virtual ~Monster() override;
+	Arrow();
+	virtual ~Arrow() override;
 
 	virtual void BeginPlay() override;
 	virtual void Tick() override;
@@ -21,6 +21,5 @@ private:
 
 protected:
 	// TODO 
-
 };
 

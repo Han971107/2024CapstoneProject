@@ -1,24 +1,35 @@
 #pragma once
+#include "FlipbookActor.h"
 
-class Component;
-
-class GameObject
+class GameObject : public FlipbookActor
 {
+	using Super = FlipbookActor;
 public:
 	GameObject();
-	~GameObject();
+	virtual ~GameObject() override;
 
-	virtual void Start();
-	virtual void Update();
-	virtual void Render(HDC hdc);
-
-	void SetPos(Vec2 pos) { _pos = pos; }
-	Vec2 GetPos() { return _pos; }
-
-	void AddComponent(Component* component);
+	virtual void BeginPlay() override;
+	virtual void Tick() override;
+	virtual void Render(HDC hdc) override;
 
 protected:
-	Vec2 _pos = { 0 , 0 };
-	vector<Component*> _components;
+	virtual void TickIdle(){};
+	virtual void TickMove(){};
+	virtual void TickSkill(){};
+	virtual void UpdateAnimation(){};
+
+public:
+	void SetState(ObjectState state);
+	void SetDir(Dir dir);
+
+	bool HasReachedDest();
+	bool CanGo(Vec2Int cellPos);
+	void SetCellPos(Vec2Int cellPos, bool teleport = false);
+
+protected:
+	Vec2Int _cellPos = {};
+	Vec2 _speed = {};
+	Dir _dir = DIR_DOWN;
+	ObjectState _state = ObjectState::Idle;
 };
 

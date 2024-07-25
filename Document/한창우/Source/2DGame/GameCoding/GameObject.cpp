@@ -1,40 +1,96 @@
 #include "pch.h"
 #include "GameObject.h"
-#include "Component.h"
+#include "Player.h"
+#include "InputManager.h"
+#include "TimeManager.h"
+#include "ResourceManager.h"
+#include "Flipbook.h"
+#include "CameraComponent.h"
+#include "BoxCollider.h"
+#include "SceneManager.h"
+#include "DevScene.h"
 
 GameObject::GameObject()
 {
+
 }
 
 GameObject::~GameObject()
 {
+
 }
 
-void GameObject::Start()
+void GameObject::BeginPlay()
 {
-	for (Component* component : _components)
-	{
-		component->Start();
-	}
+	Super::BeginPlay();
+
+	SetState(ObjectState::Move);
+	SetState(ObjectState::Idle);
 }
 
-void GameObject::Update()
+void GameObject::Tick()
 {
-	for (Component* component : _components)
+	Super::Tick();
+
+	switch (_state)
 	{
-		component->Update();
+	case ObjectState::Idle:
+		TickIdle(); 
+		break;
+	case ObjectState::Move:
+		TickMove();
+		break;
+	case ObjectState::Skill:
+		TickSkill();
+		break;
 	}
 }
 
 void GameObject::Render(HDC hdc)
 {
-	for (Component* component : _components)
-	{
-		component->Render(hdc);
-	}
+	Super::Render(hdc);
 }
 
-void GameObject::AddComponent(Component* component)
+void GameObject::SetState(ObjectState state)
 {
-	_components.push_back(component);
+	if (_state == state)
+		return;
+
+	_state = state;
+	UpdateAnimation();
+}
+
+void GameObject::SetDir(Dir dir)
+{
+	_dir = dir;
+	UpdateAnimation();
+}
+
+bool GameObject::HasReachedDest()
+{
+	Vec2 dir = (_destPos - _pos);
+	return (dir.Length() < 10.f);
+}
+
+bool GameObject::CanGo(Vec2Int cellPos)
+{
+	DevScene* scene = dynamic_cast<DevScene*>(GET_SINGLE(SceneManager)->GetCurrentScene());
+	if (scene == nullptr)
+		return false;
+
+	return scene->CanGo(cellPos);
+}
+
+void GameObject::SetCellPos(Vec2Int cellPos, bool teleport)
+{
+	_cellPos = cellPos;
+
+	DevScene* scene = dynamic_cast<DevScene*>(GET_SINGLE(SceneManager)->GetCurrentScene());
+	if (scene == nullptr)
+		return;
+
+	_destPos = scene->ConvertPos(cellPos);
+
+	if (teleport)
+		_pos = _destPos;
 }
