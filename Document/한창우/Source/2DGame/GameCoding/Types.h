@@ -15,8 +15,6 @@ struct Stat
 {
 	int32 hp = 0;
 	int32 maxHp = 0;
-	int32 attack = 0;
-	int32 defence = 0;
 	float speed = 0;
 };
 
@@ -24,7 +22,7 @@ struct Vector
 {
 	Vector() {}
 	Vector(float x, float y) : x(x), y(y) {}
-	Vector(POINT pt) : x((float)pt.x), y((float)pt.y) {}
+	Vector(POINT pt) : x((float)pt.x), y((float)pt.y) { }
 
 	Vector operator+(const Vector& other)
 	{
@@ -62,10 +60,10 @@ struct Vector
 		y -= other.y;
 	}
 
-	void operator*=(const Vector& other)
+	void operator*=(float ratio)
 	{
-		x *= other.x;
-		y *= other.y;
+		x *= ratio;
+		y *= ratio;
 	}
 
 	float LengthSquared()
@@ -78,10 +76,10 @@ struct Vector
 		return ::sqrt(LengthSquared());
 	}
 
-	void Normalize() 
+	void Normalize()
 	{
 		float length = Length();
-		if (length < 0.0000000001f)
+		if (length < 0.00000000001f)
 			return;
 
 		x /= length;
@@ -106,7 +104,7 @@ struct VectorInt
 {
 	VectorInt() {}
 	VectorInt(int32 x, int32 y) : x(x), y(y) {}
-	VectorInt(POINT pt) : x((int32)pt.x), y((int32)pt.y) {}
+	VectorInt(POINT pt) : x(pt.x), y(pt.y) { }
 
 	VectorInt operator+(const VectorInt& other)
 	{
@@ -124,6 +122,14 @@ struct VectorInt
 		return ret;
 	}
 
+	VectorInt operator*(int32 value)
+	{
+		VectorInt ret;
+		ret.x = x * value;
+		ret.y = y * value;
+		return ret;
+	}
+
 	void operator+=(const VectorInt& other)
 	{
 		x += other.x;
@@ -136,18 +142,32 @@ struct VectorInt
 		y -= other.y;
 	}
 
-	void operator*=(const VectorInt& other)
+	bool operator==(const VectorInt& other)
 	{
-		x *= other.x;
-		y *= other.y;
+		return x == other.x && y == other.y;
 	}
 
-	float Dot(VectorInt other)
+	bool operator!=(const VectorInt& other)
+	{
+		return !(*this == other);
+	}
+
+	int32 LengthSquared()
+	{
+		return x * x + y * y;
+	}
+
+	float Length()
+	{
+		return (float)::sqrt(LengthSquared());
+	}
+
+	int32 Dot(VectorInt other)
 	{
 		return x * other.x + y * other.y;
 	}
 
-	float Cross(VectorInt other)
+	int32 Cross(VectorInt other)
 	{
 		return x * other.y - y * other.x;
 	}
