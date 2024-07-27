@@ -31,14 +31,15 @@ void Scene::Init()
 
 void Scene::Update()
 {
-	for (const vector<Actor*>& actors : _actors)
+	GET_SINGLE(CollisionManager)->Update();
+
+	// บนป็
+	for (const vector<Actor*> actors : _actors)
 		for (Actor* actor : actors)
 			actor->Tick();
 
 	for (UI* ui : _uis)
 		ui->Tick();
-
-	GET_SINGLE(CollisionManager)->Update();
 }
 
 void Scene::Render(HDC hdc)

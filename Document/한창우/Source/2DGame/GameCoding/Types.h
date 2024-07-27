@@ -15,6 +15,8 @@ struct Stat
 {
 	int32 hp = 0;
 	int32 maxHp = 0;
+	int32 attack = 0;
+	int32 defence = 0;
 	float speed = 0;
 };
 
@@ -140,6 +142,22 @@ struct VectorInt
 	{
 		x -= other.x;
 		y -= other.y;
+	}
+
+	bool operator<(const VectorInt& other) const
+	{
+		if (x != other.x)
+			return x < other.x;
+
+		return y < other.y;
+	}
+
+	bool operator>(const VectorInt& other) const
+	{
+		if (x != other.x)
+			return x > other.x;
+
+		return y > other.y;
 	}
 
 	bool operator==(const VectorInt& other)

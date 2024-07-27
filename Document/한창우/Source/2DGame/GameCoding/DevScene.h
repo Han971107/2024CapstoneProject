@@ -2,8 +2,20 @@
 #include "Scene.h"
 
 class Actor;
+class Player;
 class GameObject;
 class UI;
+
+struct PQNode
+{
+	PQNode(int32 cost, Vec2Int pos) : cost(cost), pos(pos){}
+
+	bool operator<(const PQNode& other) const { return cost < other.cost; }
+	bool operator>(const PQNode& other) const { return cost > other.cost; }
+
+	int32 cost;
+	Vec2Int pos;
+};
 
 class DevScene : public Scene
 {
@@ -15,6 +27,9 @@ public:
 	virtual void Init() override;
 	virtual void Update() override;
 	virtual void Render(HDC hdc) override;
+
+	virtual void AddActor(Actor* actor);
+	virtual void RemoveActor(Actor* actor);
 
 	void LoadMap();
 	void LoadPlayer();
@@ -39,8 +54,26 @@ public:
 		return ret;
 	}
 
+	template<typename T>
+	T* SpawnObjectAtRandomPos()
+	{
+		Vec2Int randPos = GetRandomCellPos();
+		return SpawnObject<T>(randPos);
+	}
+
+	Player* FindClosestPlayer(Vec2Int cellPos);
+	bool FindPath(Vec2Int src, Vec2Int dest, vector<Vec2Int>& path, int32 maxDepth = 10);
+
 	bool CanGo(Vec2Int cellPos);
 	Vec2 ConvertPos(Vec2Int cellPos);
+	Vec2Int GetRandomCellPos();
+
+private:
+	void TickMonsterSpawn();
+
+private:
+	const int32 DESIRED_MONSTER_COUNT = 20;
+	int32 _monsterCount = 0;
 
 	class TilemapActor* _tilemapActor = nullptr;
 };
