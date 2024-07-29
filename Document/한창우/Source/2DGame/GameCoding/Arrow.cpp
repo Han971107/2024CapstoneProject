@@ -99,5 +99,5 @@ void Arrow::TickMove()
 
 void Arrow::UpdateAnimation()
 {
-
+	SetFlipbook(_flipbookMove[_dir]);
 }

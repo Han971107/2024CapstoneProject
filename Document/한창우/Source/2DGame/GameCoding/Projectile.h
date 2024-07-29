@@ -20,7 +20,6 @@ private:
 	virtual void UpdateAnimation() override {};
 
 protected:
-	// TODO 
-
+	Creature* _owner;	// TEMP
 };
 
