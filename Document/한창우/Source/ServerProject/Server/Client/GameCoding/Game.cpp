@@ -5,6 +5,7 @@
 #include "SceneManager.h"
 #include "ResourceManager.h"
 #include "SoundManager.h"
+#include "NetworkManager.h"
 
 Game::Game()
 {
@@ -39,6 +40,8 @@ void Game::Init(HWND hwnd)
 	GET_SINGLE(ResourceManager)->Init(hwnd, fs::path(L"C:\\Users\\hcw97\\Desktop\\2024CapstoneProject\\Document\\ÇÑÃ¢¿ì\\Source\\ServerProject\\Server\\Client\\Resources"));
 
 	GET_SINGLE(SceneManager)->ChangeScene(SceneType::DevScene);
+
+	GET_SINGLE(NetworkManager)->Init();
 }
 
 void Game::Update()
@@ -46,6 +49,7 @@ void Game::Update()
 	GET_SINGLE(TimeManager)->Update();
 	GET_SINGLE(InputManager)->Update();
 	GET_SINGLE(SceneManager)->Update();
+	GET_SINGLE(NetworkManager)->Update();
 }
 
 void Game::Render()

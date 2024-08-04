@@ -81,7 +81,7 @@
     <Filter Include="소스 파일\Protocol">
       <UniqueIdentifier>{5d6f6344-e713-4ce5-b290-de91330dba05}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\07. NetworkManager">
+    <Filter Include="소스 파일\07. Network">
       <UniqueIdentifier>{5f6b6c59-287e-4a98-9574-724249f74d06}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -240,10 +240,13 @@
       <Filter>소스 파일\Protocol</Filter>
     </ClInclude>
     <ClInclude Include="ClientPacketHandler.h">
-      <Filter>소스 파일\07. NetworkManager</Filter>
+      <Filter>소스 파일\07. Network</Filter>
     </ClInclude>
     <ClInclude Include="ServerSession.h">
-      <Filter>소스 파일\07. NetworkManager</Filter>
+      <Filter>소스 파일\07. Network</Filter>
+    </ClInclude>
+    <ClInclude Include="NetworkManager.h">
+      <Filter>소스 파일\01.Manager\Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -393,10 +396,13 @@
       <Filter>소스 파일\Protocol</Filter>
     </ClCompile>
     <ClCompile Include="ClientPacketHandler.cpp">
-      <Filter>소스 파일\07. NetworkManager</Filter>
+      <Filter>소스 파일\07. Network</Filter>
     </ClCompile>
     <ClCompile Include="ServerSession.cpp">
-      <Filter>소스 파일\07. NetworkManager</Filter>
+      <Filter>소스 파일\07. Network</Filter>
+    </ClCompile>
+    <ClCompile Include="NetworkManager.cpp">
+      <Filter>소스 파일\01.Manager\Game</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

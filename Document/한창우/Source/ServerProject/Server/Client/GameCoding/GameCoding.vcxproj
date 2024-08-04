@@ -181,6 +181,7 @@
     <ClInclude Include="HitEffect.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Monster.h" />
+    <ClInclude Include="NetworkManager.h" />
     <ClInclude Include="Panel.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Player.h" />
@@ -235,6 +236,7 @@
     <ClCompile Include="HitEffect.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="NetworkManager.cpp" />
     <ClCompile Include="Panel.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

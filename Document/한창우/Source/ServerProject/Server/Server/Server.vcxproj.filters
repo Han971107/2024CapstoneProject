@@ -15,10 +15,10 @@
     <Filter Include="소스 파일\Headers">
       <UniqueIdentifier>{c5552168-f16d-46f0-b10f-4f168588a2bd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Protocol">
+    <Filter Include="소스 파일\Protocol">
       <UniqueIdentifier>{242da667-2a1f-4649-9ce4-49eec851259d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Protocol\Proto">
+    <Filter Include="소스 파일\Protocol\Proto">
       <UniqueIdentifier>{b940fc0e-bc6b-4166-98fd-8b51bd41e1f5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -39,13 +39,13 @@
       <Filter>소스 파일\Main</Filter>
     </ClCompile>
     <ClCompile Include="Enum.pb.cc">
-      <Filter>Protocol</Filter>
+      <Filter>소스 파일\Protocol</Filter>
     </ClCompile>
     <ClCompile Include="Protocol.pb.cc">
-      <Filter>Protocol</Filter>
+      <Filter>소스 파일\Protocol</Filter>
     </ClCompile>
     <ClCompile Include="Struct.pb.cc">
-      <Filter>Protocol</Filter>
+      <Filter>소스 파일\Protocol</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -62,27 +62,27 @@
       <Filter>소스 파일\Main</Filter>
     </ClInclude>
     <ClInclude Include="Enum.pb.h">
-      <Filter>Protocol</Filter>
+      <Filter>소스 파일\Protocol</Filter>
     </ClInclude>
     <ClInclude Include="Protocol.pb.h">
-      <Filter>Protocol</Filter>
+      <Filter>소스 파일\Protocol</Filter>
     </ClInclude>
     <ClInclude Include="Struct.pb.h">
-      <Filter>Protocol</Filter>
+      <Filter>소스 파일\Protocol</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Common\protoc-21.12-win64\bin\GenPackets.bat">
-      <Filter>Protocol</Filter>
+      <Filter>소스 파일\Protocol</Filter>
     </None>
     <None Include="..\Common\protoc-21.12-win64\bin\Enum.proto">
-      <Filter>Protocol\Proto</Filter>
+      <Filter>소스 파일\Protocol\Proto</Filter>
     </None>
     <None Include="..\Common\protoc-21.12-win64\bin\Protocol.proto">
-      <Filter>Protocol\Proto</Filter>
+      <Filter>소스 파일\Protocol\Proto</Filter>
     </None>
     <None Include="..\Common\protoc-21.12-win64\bin\Struct.proto">
-      <Filter>Protocol\Proto</Filter>
+      <Filter>소스 파일\Protocol\Proto</Filter>
     </None>
   </ItemGroup>
 </Project>
