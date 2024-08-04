@@ -47,14 +47,14 @@ void Creature::OnDamaged(Creature* attacker)
 	if (damage <= 0)
 		return;
 
-	stat.hp = max(0, stat.hp - damage);
+ 	stat.hp = max(0, stat.hp - damage);
 
-	if (stat.hp == 0)
+	if (stat.hp <= 0)
 	{
 		Scene* scene = GET_SINGLE(SceneManager)->GetCurrentScene();
 		if (scene)
 		{
-			scene->RemoveActor(this);
+ 			scene->RemoveActor(this);
 		}
 	}
 }

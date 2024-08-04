@@ -1,6 +1,8 @@
 #pragma once
 #include "GameObject.h"
 
+class Creature;
+
 class Projectile : public GameObject
 {
 	using Super = GameObject;

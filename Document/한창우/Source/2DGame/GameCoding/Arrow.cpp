@@ -6,6 +6,7 @@
 #include "ResourceManager.h"
 #include "Flipbook.h"
 #include "HitEffect.h"
+#include "Creature.h"
 
 Arrow::Arrow()
 {

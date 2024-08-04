@@ -31,8 +31,6 @@ void Scene::Init()
 
 void Scene::Update()
 {
-	GET_SINGLE(CollisionManager)->Update();
-
 	// บนป็
 	for (const vector<Actor*> actors : _actors)
 		for (Actor* actor : actors)
@@ -40,6 +38,8 @@ void Scene::Update()
 
 	for (UI* ui : _uis)
 		ui->Tick();
+
+	GET_SINGLE(CollisionManager)->Update();
 }
 
 void Scene::Render(HDC hdc)
