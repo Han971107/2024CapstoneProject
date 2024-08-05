@@ -18,6 +18,7 @@
 #include "TileMapActor.h"
 #include "Tilemap.h"
 #include "Monster.h"
+#include "MyPlayer.h"
 
 DevScene::DevScene()
 {
@@ -63,7 +64,8 @@ void DevScene::Init()
 	LoadEffect();
 	LoadTilemap();
 
-	SpawnObject<Player>(Vec2Int{ 5, 5 });
+	//SpawnObject<MyPlayer>(Vec2Int{ 5, 5 });
+	SpawnObjectAtRandomPos<MyPlayer>();
 	SpawnObject<Monster>(Vec2Int{ 7, 7 });
 
 	GET_SINGLE(ResourceManager)->LoadSound(L"BGM", L"Sound\\BGM.wav");

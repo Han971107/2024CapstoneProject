@@ -1,6 +1,19 @@
 #pragma once
 #include "GameObject.h"
 
+class Flipbook;
+class Collider;
+class BoxCollider;
+
+struct Stat
+{
+	int32 hp = 100;
+	int32 maxHp = 100;
+	int32 attack = 30;
+	int32 defence = 5;
+	float speed = 0;
+};
+
 class Creature : public GameObject
 {
 	using Super = GameObject;

@@ -248,6 +248,7 @@
     <ClInclude Include="NetworkManager.h">
       <Filter>소스 파일\01.Manager\Game</Filter>
     </ClInclude>
+    <ClInclude Include="MyPlayer.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GameCoding.rc">
@@ -403,6 +404,9 @@
     </ClCompile>
     <ClCompile Include="NetworkManager.cpp">
       <Filter>소스 파일\01.Manager\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="MyPlayer.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
