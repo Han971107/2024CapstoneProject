@@ -12,7 +12,7 @@ RecvBuffer::RecvBuffer(int32 bufferSize) : _bufferSize(bufferSize)
 }
 
 RecvBuffer::~RecvBuffer()
-{
+{	
 }
 
 void RecvBuffer::Clean()
