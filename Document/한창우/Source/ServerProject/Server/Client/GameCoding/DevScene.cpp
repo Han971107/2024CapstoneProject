@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "DevScene.h"
+#include "SceneManager.h"
 #include "InputManager.h"
 #include "TimeManager.h"
 #include "ResourceManager.h"
@@ -86,7 +87,7 @@ void DevScene::Update()
 	float deltaTime = GET_SINGLE(TimeManager)->GetDeltaTime();
 	// 거리 = 시간 * 속도
 
-	TickMonsterSpawn();
+	//TickMonsterSpawn();
 
 	//if (GET_SINGLE(InputManager)->GetButtonDown(KeyType::Q))
 	//{
@@ -322,6 +323,59 @@ void DevScene::LoadTilemap()
 			_tilemapActor->SetShowDebug(false);
 		}
 	}
+}
+
+void DevScene::Handle_S_AddObject(Protocol::S_AddObject& pkt)
+{
+	uint64 myPlayerId = GET_SINGLE(SceneManager)->GetMyPlayerId();
+
+	const int32 size = pkt.objects_size();
+	for (int32 i = 0; i < size; ++i)
+	{
+		const Protocol::ObjectInfo& info = pkt.objects(i);
+		if (myPlayerId == info.objectid())
+			continue;
+
+		if (info.objecttype() == Protocol::OBJECT_TYPE_PLAYER)
+		{
+			Player* player = SpawnObject<Player>(Vec2Int{ info.posx(), info.posy() });
+			player->SetDir(info.dir());
+			player->SetState(info.state());
+			player->info = info;
+		}
+		else if (info.objecttype() == Protocol::OBJECT_TYPE_MONSTER)
+		{
+			Monster* monster = SpawnObject<Monster>(Vec2Int{ info.posx(), info.posy() });
+			monster->SetDir(info.dir());
+			monster->SetState(info.state());
+			monster->info = info;
+		}
+	}
+}
+
+void DevScene::Handle_S_RemoveObject(Protocol::S_RemoveObject& pkt)
+{
+	const int32 size = pkt.ids_size();
+	for (int32 i = 0; i < size; i++)
+	{
+		int32 id = pkt.ids(i);
+
+		GameObject* object = _GetObject(id);
+		if (object)
+			RemoveActor(object);
+	}
+}
+
+GameObject* DevScene::_GetObject(uint64 id)
+{
+	for (Actor* actor : _actors[LAYER_OBJECT])
+	{
+		GameObject* gameObject = dynamic_cast<GameObject*>(actor);
+		if (gameObject && gameObject->info.objectid() == id)
+			return gameObject;
+	}
+
+	return nullptr;
 }
 
 Player* DevScene::FindClosestPlayer(Vec2Int cellPos)

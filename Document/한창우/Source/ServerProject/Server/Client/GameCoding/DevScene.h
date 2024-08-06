@@ -61,6 +61,16 @@ public:
 		return SpawnObject<T>(randPos);
 	}
 
+public:
+	void Handle_S_AddObject(Protocol::S_AddObject& pkt);
+	void Handle_S_RemoveObject(Protocol::S_RemoveObject& pkt);
+
+public:
+	// 강의에서는 GetObject 라고 표기했지만
+	// 나는 여기서 어떤 헤더파일의 매크로와 이름이 겹치는
+	// 상황이 발생해서 _GetObject로 수정했다.
+	GameObject* _GetObject(uint64 id);
+
 	Player* FindClosestPlayer(Vec2Int cellPos);
 	bool FindPath(Vec2Int src, Vec2Int dest, vector<Vec2Int>& path, int32 maxDepth = 10);
 

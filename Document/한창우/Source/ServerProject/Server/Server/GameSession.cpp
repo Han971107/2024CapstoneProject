@@ -10,7 +10,7 @@ void GameSession::OnConnected()
 
 	// 지금은 클라가 접속하면 바로 로그인 정보를 준다.
  	Send(ServerPacketHandler::Make_S_EnterGame());
-
+	
 	// 게임 입장
 	GRoom->EnterRoom(GetSessionRef());
 }

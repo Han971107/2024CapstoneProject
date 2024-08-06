@@ -98,6 +98,28 @@ GameObjectRef GameRoom::FindObject(uint64 id)
 	return nullptr; 
 }
 
+void GameRoom::Handle_C_Move(Protocol::C_Move& pkt)
+{
+	uint64 id = pkt.info().objectid();
+	GameObjectRef gameObject = FindObject(id);
+	if (gameObject == nullptr)
+		return;
+
+	// TODO : Validation
+	gameObject->info.set_state(pkt.info().state());
+	gameObject->info.set_dir(pkt.info().dir());
+	gameObject->info.set_posx(pkt.info().posx());
+	gameObject->info.set_posy(pkt.info().posy());
+
+	// 클라로부터 받은 데이터가 유효한 범위에 속하는지 테스트하는 코드가 
+	// 아래 있어야한다. 강의에서는 skip함
+
+	{
+		SendBufferRef sendBuffer = ServerPacketHandler::Make_S_Move(pkt.info());
+		Broadcast(sendBuffer);
+	}
+}
+
 void GameRoom::AddObject(GameObjectRef gameObject)
 {
 	uint64 id = gameObject->info.objectid();
