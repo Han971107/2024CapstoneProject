@@ -144,7 +144,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Creature.cpp" />
     <ClCompile Include="Enum.pb.cc">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
@@ -166,9 +165,9 @@
     <ClCompile Include="Struct.pb.cc">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Tilemap.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Creature.h" />
     <ClInclude Include="Enum.pb.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameRoom.h" />
@@ -180,6 +179,7 @@
     <ClInclude Include="Protocol.pb.h" />
     <ClInclude Include="ServerPacketHandler.h" />
     <ClInclude Include="Struct.pb.h" />
+    <ClInclude Include="Tilemap.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Common\protoc-21.12-win64\bin\Enum.proto" />

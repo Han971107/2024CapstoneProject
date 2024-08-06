@@ -9,7 +9,7 @@ void NetworkManager::Init()
 	SocketUtils::Init();
 
 	_service = make_shared<ClientService>(
-		NetAddress(L"127.0.0.1", 7777),
+		NetAddress(L"192.168.219.173", 7777),
 		make_shared<IocpCore>(),
 		[=]() { return CreateSession(); }, // TODO : SessionManager µî
 		1);

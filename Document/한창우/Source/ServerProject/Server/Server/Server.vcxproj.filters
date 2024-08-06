@@ -65,11 +65,11 @@
     <ClCompile Include="GameObject.cpp">
       <Filter>소스 파일\Game\Object</Filter>
     </ClCompile>
-    <ClCompile Include="Creature.cpp">
-      <Filter>소스 파일\Game\Object</Filter>
-    </ClCompile>
     <ClCompile Include="GameRoom.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\Game\Room</Filter>
+    </ClCompile>
+    <ClCompile Include="Tilemap.cpp">
+      <Filter>소스 파일\Game\Room</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -103,10 +103,12 @@
     <ClInclude Include="GameObject.h">
       <Filter>소스 파일\Game\Object</Filter>
     </ClInclude>
-    <ClInclude Include="Creature.h">
-      <Filter>소스 파일\Game\Object</Filter>
+    <ClInclude Include="GameRoom.h">
+      <Filter>소스 파일\Game\Room</Filter>
     </ClInclude>
-    <ClInclude Include="GameRoom.h" />
+    <ClInclude Include="Tilemap.h">
+      <Filter>소스 파일\Game\Room</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Common\protoc-21.12-win64\bin\GenPackets.bat">

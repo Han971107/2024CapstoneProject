@@ -52,6 +52,8 @@ void Monster::TickIdle()
 	DevScene* scene = dynamic_cast<DevScene*>(GET_SINGLE(SceneManager)->GetCurrentScene());
 	if (scene == nullptr)
 		return;
+	
+	return;
 
 	// Find Player
 	if (_target == nullptr)

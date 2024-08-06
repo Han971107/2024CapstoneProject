@@ -1,13 +1,13 @@
 #pragma once
-#include "Creature.h"
+#include "GameObject.h"
 
 /*-----------
 	Server
 -------------*/
 
-class Player : public Creature
+class Player : public GameObject
 {
-	using Super = Creature;
+	using Super = GameObject;
 
 public:
 	Player();
