@@ -30,3 +30,17 @@
 *.exe
 *.out
 *.app
+
+
+# Unreal Generated Fules
+#*/Build
+*/Binaries
+*/DerivedDataCache
+*/Intermediate
+*/Saved
+
+#Asset Files
+# */Content/folder
+
+#VS Generated Files
+*/.vs
